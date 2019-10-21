@@ -1,0 +1,16 @@
+{
+  "bindings": [
+    {
+      "name": "Timer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 0 0 * * *"
+    },
+    {
+      "type": "sendGrid",
+      "direction": "out",
+      "name": "message",
+      "apiKey": "AzureWebJobsSendGridApiKey"
+    }
+  ]
+}

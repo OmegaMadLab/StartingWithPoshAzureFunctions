@@ -4,4 +4,5 @@
 #
 @{
     'Az' = '2.*'
+    'Az.ResourceGraph' = '0.7.6'
 }
