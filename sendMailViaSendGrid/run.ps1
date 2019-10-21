@@ -32,7 +32,7 @@ if ($emailAddress -and $emailAddress -match $emailRegex) {
             "from" = @{ 
                 "email" = "AzFunctionDemo@omegamadlab.test" 
             }        
-            "subject" = "Test invio mail"
+            "subject" = "Mail test"
             "content" = @(
                 @{
                     "type" = "text/plain"
