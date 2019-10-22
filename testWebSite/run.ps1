@@ -7,15 +7,15 @@ param($Request, $TriggerMetadata)
 Write-Host "PowerShell HTTP trigger function processed a request."
 
 # Interact with query parameters or the body of the request.
-$computerName = $Request.Query.computername
-if (-not $computerName) {
-    $computerName = $Request.Body.computername
+$ip = $Request.Query.ip
+if (-not $ip) {
+    $ip = $Request.Body.ip
 }
 
-if ($computerName) {
+if ($ip) {
     $status = [HttpStatusCode]::OK
     
-    $testOut = Invoke-RestMethod -Uri "http://$computerName" -Method Get -ContentType "text/html"
+    $testOut = Invoke-RestMethod -Uri "http://$ip" -Method Get -ContentType "text/html"
     
     $body = $testOut
 }

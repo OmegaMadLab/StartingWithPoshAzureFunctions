@@ -49,6 +49,11 @@ az functionapp config appsettings set -n $functionAppName -g $rgName `
 az functionapp config appsettings set -n $functionAppName -g $rgName `
     --settings "WEBSITE_TIME_ZONE=W. Europe Standard Time"
 
+# Enable concurrency for PowerShell workers - may lead to timeouts with consumption plan, switch to premium or isolated
+az functionapp config appsettings set -n $functionAppName -g $rgName `
+    --settings "PSWorkerInProcConcurrencyUpperBound=10"
+
+
 # Create an unattached managed disk to test resourceReport function
 $diskConfig = New-AzDiskConfig -Location  $location -SkuName Standard_LRS -DiskSizeGB 10 -CreateOption Empty 
 $diskConfig | New-AzDisk -ResourceGroupName $rgName -DiskName "UnattachedDisk"
@@ -99,16 +104,45 @@ New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Ome
     -adminPassword (ConvertTo-SecureString "Passw0rd.1" -AsPlainText -Force) `
     -ResourceGroupName $rgName
 
+Get-AzVm -Name "Demo-WinVM" -ResourceGroupName $rgName | Invoke-AzVMRunCommand -CommandId RunPowerShellScript -ScriptPath .\prepareIIS.ps1
+
 # Get or create resource group
-try {
-    $Rg = Get-AzResourceGroup -Name "premiumPlan-RG" -ErrorAction Stop
-} catch {
-    $Rg = New-AzResourceGroup -Name "premiumPlan-RG" -Location $Location
-}
+# try {
+#     $Rg = Get-AzResourceGroup -Name "premiumPlan-RG" -ErrorAction Stop
+# } catch {
+#     $Rg = New-AzResourceGroup -Name "premiumPlan-RG" -Location $Location
+# }
 
-az functionapp plan create --resource-group ($Rg).ResourceGroupName --name PremiumConsumptionPlan `
-    --location $location --sku EP1
+# az functionapp plan create --resource-group ($Rg).ResourceGroupName --name PremiumConsumptionPlan `
+#     --location $location --sku EP1
 
-Move-AzResource -DestinationResourceGroupName $rg.ResourceGroupName -ResourceId (Get-AzWebApp -Name $functionAppName -ResourceGroupName $rgName).Id
+# deploy a monitoring webapp that can help you tracking event grid subscription events
+$siteName = "EventGridMonitor-" + (Get-Random -max 999999999)
+New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json `
+    -siteName $siteName `
+    -hostingPlanName "$siteName-plan" `
+    -ResourceGroupName $rgName
 
-az functionapp update --name $functionAppName --resource-group $rg.ResourceGroupName --plan "/subscriptions/bf51af6a-bb5b-4406-b067-3eb3a401281b/resourceGroups/premiumPlan-RG/providers/Microsoft.Web/serverfarms/PremiumConsumptionPlan"
+# Create a new eventgrid subscription on the resource group for stop/deallocate VM events to trigger the monitoring webapp
+$AdvFilter=@{operator="StringContains"; key="data.operationName"; Values=@('Microsoft.Compute/virtualMachines/deallocate/action', 'Microsoft.Compute/virtualMachines/powerOff/action')}
+
+New-AzEventGridSubscription `
+  -EventSubscriptionName demoSubToResourceGroupAzFunc `
+  -ResourceGroupName $rgName `
+  -Endpoint "https://$siteName.azurewebsites.net/api/updates" `
+  -IncludedEventType "Microsoft.Resources.ResourceActionSuccess" `
+  -AdvancedFilter $AdvFilter
+
+# Create a new eventgrid subscription on the resource group for stop/deallocate VM events to trigger restartVM-EventGrid function
+# Endpoint for Function App requires system key, that can be obtained with API call with master key. Master key can be obtained from AppSettings.
+# Replace {masterkey} with your function App Master Key
+$systemKey = Invoke-RestMethod -Method Get -Uri http://$functionAppName.azurewebsites.net/admin/host/systemkeys/eventgrid_extension?code={masterkey}
+
+$AdvFilter=@{operator="StringContains"; key="data.operationName"; Values=@('Microsoft.Compute/virtualMachines/deallocate/action', 'Microsoft.Compute/virtualMachines/powerOff/action')}
+
+New-AzEventGridSubscription `
+  -EventSubscriptionName demoSubToResourceGroupAzFunc `
+  -ResourceGroupName $rgName `
+  -Endpoint "https://$functionAppName.azurewebsites.net/runtime/webhooks/eventgrid?functionName=restartVM-EventGrid&code=$($systemKey.value)" `
+  -IncludedEventType "Microsoft.Resources.ResourceActionSuccess" `
+  -AdvancedFilter $AdvFilter
