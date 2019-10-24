@@ -19,7 +19,7 @@
       "type": "queue",
       "direction": "out",
       "name": "outputQueueItem",
-      "queueName": "vmtoprocess",
+      "queueName": "%storageQueueName%",
       "connection": "AzureWebJobsStorage"
     }
   ]

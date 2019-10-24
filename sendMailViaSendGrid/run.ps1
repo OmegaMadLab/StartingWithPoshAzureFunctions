@@ -40,7 +40,7 @@ if ($emailAddress -and $emailAddress -match $emailRegex) {
                 }
             )
         }
-        
+
         Push-OutputBinding -Name message -Value (ConvertTo-Json -InputObject $mail -Depth 4)  
 
         $status = [HttpStatusCode]::OK

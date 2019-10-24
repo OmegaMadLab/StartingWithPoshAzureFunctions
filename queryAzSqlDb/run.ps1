@@ -7,8 +7,6 @@ param($Request, $TriggerMetadata)
 Write-Information "PowerShell HTTP trigger function processed a request."
 
 # query SQL using secrets from KeyVault (referenced in appSettings)
-Import-Module sqlserver
-
 try {
     Write-Information "Query Azure SQL Database..."
     $qryOut = Invoke-SqlCmd -ServerInstance $env:SqlServer `

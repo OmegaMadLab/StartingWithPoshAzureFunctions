@@ -27,5 +27,6 @@ else {
 # Associate values to output bindings by calling 'Push-OutputBinding'.
 Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
     StatusCode = $status
+    ContentType = "text/html" 
     Body = $body
 })
