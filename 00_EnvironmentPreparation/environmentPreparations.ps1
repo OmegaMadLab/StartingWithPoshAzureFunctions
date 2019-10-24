@@ -14,8 +14,8 @@ $subId = (Get-AzContext).Subscription.Id
 
 # Create a Key Vault to host secrets
 # To create a key vault, you must be a member of the AAD tenant; guest account (Microsoft Account or users invited via Azure B2B) are not authorized to interact with vaults.
-$keyVault = New-AzKeyVault -Name PoshAzFuncDemoKeyVault -ResourceGroupName $rgName -Location $location
-Set-AzKeyVaultAccessPolicy -UserPrincipalName (Get-AzContext).Account.Id -PermissionsToSecrets "set","get","delete" -VaultName $keyVault.VaultName -PassThru
+$keyVault = New-AzKeyVault -Name ("PoshAzFuncDemoKV" + (Get-Random -max 9999999)) -ResourceGroupName $rgName -Location $location
+Set-AzKeyVaultAccessPolicy -UserPrincipalName (Get-AzContext).Account.Id -PermissionsToSecrets "list","set","get","delete" -VaultName $keyVault.VaultName -PassThru
 
 # Insert SendGrid API Key - info on account creation available at http://www.omegamadlab.com/2019/10/21/using-sendgrid-binding-from-powershell-in-azure-functions/
 $secret = Set-AzKeyVaultSecret -Name "SendGridApiKey" -SecretValue (Read-Host "Insert SendGrid API KEY" -AsSecureString) -VaultName $keyVault.VaultName
@@ -34,7 +34,7 @@ New-AzSqlServerFirewallRule -ServerName $sqlSrv.ServerName -AllowAllAzureIPs -Re
 
 New-AzSqlDatabase -DatabaseName "DemoDB" `
     -ServerName $sqlSrv.ServerName `
-    -Edition Free `
+    -Edition Basic `
     -ResourceGroupName $rgName `
     -SampleName AdventureWorksLT
 
@@ -59,6 +59,7 @@ Get-AzVm -Name "Demo-WinVM" -ResourceGroupName $rgName | Invoke-AzVMRunCommand -
 $siteName = "EventGridMonitor-" + (Get-Random -max 999999999)
 New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json `
     -siteName $siteName `
+    -sku S1 `
     -hostingPlanName "$siteName-plan" `
     -ResourceGroupName $rgName
 
@@ -66,7 +67,7 @@ New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azu
 $AdvFilter=@{operator="StringContains"; key="data.operationName"; Values=@('Microsoft.Compute/virtualMachines/deallocate/action', 'Microsoft.Compute/virtualMachines/powerOff/action')}
 
 New-AzEventGridSubscription `
-  -EventSubscriptionName demoSubToResourceGroupAzFunc `
+  -EventSubscriptionName ("demoSubToResourceGroupAzFunc" + (Get-Random -max 9999999)) `
   -ResourceGroupName $rgName `
   -Endpoint "https://$siteName.azurewebsites.net/api/updates" `
   -IncludedEventType "Microsoft.Resources.ResourceActionSuccess" `
@@ -78,17 +79,14 @@ $functionAppNames += ("AzureFunctionDemo-consumption-" + (Get-Random -max 999999
 $functionAppNames += ("AzureFunctionDemo-dedicated-" + (Get-Random -max 999999999))
 
 foreach ($functionAppName in $functionAppNames) {
-    # Get or create storage account
-    $storAccnt = Get-AzStorageAccount -ResourceGroupName $RgName
-    if(!$storAccnt) {
-        $storAccnt = New-AzStorageAccount -Name ("poshazfuncdemo" + (Get-Random -Max 99999999)) -ResourceGroupName $rgName -SkuName Standard_LRS -Location $location
-    }
-
+    # Create storage account
+    $storAccnt = New-AzStorageAccount -Name ("poshazfuncdemo" + (Get-Random -Max 99999999)) -ResourceGroupName $rgName -SkuName Standard_LRS -Location $location
+    
     # Create a storage queue
     $storQueue = $storAccnt | New-AzStorageQueue -Name "vmtoprocess"
 
     if($functionAppName -like '*consumption*') {
-        # Create function app
+        # Create function app on consumption plan
         az functionapp create --name $functionAppName `
             --resource-group $RgName `
             --os-type Windows  `
@@ -96,19 +94,13 @@ foreach ($functionAppName in $functionAppNames) {
             --storage-account $storAccnt.StorageAccountName `
             --consumption-plan-location $location
     } else {
-        $planName = "$functionAppName-plan"
-
-        az functionapp plan create --name $planName `
-            --resource-group $RgName `
-            --is-linux false `
-            --sku S2
-
+        # Create a function app on dedicated plan used also for monitoring webapp
         az functionapp create --name $functionAppName `
             --resource-group $RgName `
             --os-type Windows  `
             --runtime Powershell `
             --storage-account $storAccnt.StorageAccountName `
-            --plan $planName
+            --plan "$siteName-plan"
     }
     
     # Assign a managed identity and add contributor permission on RG
@@ -116,10 +108,6 @@ foreach ($functionAppName in $functionAppNames) {
         --resource-group $rgName `
         --role "Contributor" `
         --scope "/subscriptions/$subId/resourceGroups/$rgName"
-
-    # Adding an Access Policy on KeyVault for Function managed identity
-    $managedId = (Get-AzWebApp -Name $functionAppName -ResourceGroupName $rgName).Identity.PrincipalId
-    Set-AzKeyVaultAccessPolicy -ObjectId $managedId -PermissionsToSecrets "get" -VaultName $keyVault.VaultName -PassThru
 
     # Adding AppSetting for storage queue name
     az functionapp config appsettings set -n $functionAppName -g $rgName `
@@ -147,12 +135,17 @@ foreach ($functionAppName in $functionAppNames) {
     az functionapp config appsettings set -n $functionAppName -g $rgName `
         --settings "SqlAdminPwd=@Microsoft.KeyVault(SecretUri=$($sqlAdminPwd.Id)^^)"
 
+    # Adding an Access Policy on KeyVault for Function managed identity
+    $managedId = (Get-AzWebApp -Name $functionAppName -ResourceGroupName $rgName).Identity.PrincipalId
+    Set-AzKeyVaultAccessPolicy -ObjectId $managedId -PermissionsToSecrets "get" -VaultName $keyVault.VaultName -PassThru
+
     # Configure integration with GitHub repo
     az functionapp deployment source config `
         --branch master `
         --name $functionAppName `
         --repo-url https://github.com/OmegaMadLab/StartingWithPoshAzureFunctions `
-        --resource-group $rgName
+        --resource-group $rgName `
+        --manual-integration
 }
 
 # applying custom configurations on dedicated plan
@@ -170,7 +163,7 @@ $systemKey = Invoke-RestMethod -Method Get -Uri http://$functionAppName.azureweb
 $AdvFilter=@{operator="StringContains"; key="data.operationName"; Values=@('Microsoft.Compute/virtualMachines/deallocate/action', 'Microsoft.Compute/virtualMachines/powerOff/action')}
 
 New-AzEventGridSubscription `
-  -EventSubscriptionName demoSubToResourceGroupAzFunc `
+  -EventSubscriptionName ("demoSubToResourceGroupAzFunc" + (Get-Random -max 9999999)) `
   -ResourceGroupName $rgName `
   -Endpoint "https://$functionAppName.azurewebsites.net/runtime/webhooks/eventgrid?functionName=restartVM-EventGrid&code=$($systemKey.value)" `
   -IncludedEventType "Microsoft.Resources.ResourceActionSuccess" `
