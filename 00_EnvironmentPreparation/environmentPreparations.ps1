@@ -177,8 +177,9 @@ az functionapp deployment source config `
     --manual-integration
 
 # Enable concurrency for PowerShell workers - may lead to timeouts with consumption plan
-az functionapp config appsettings set -n $functionAppName -g $rgName `
-    --settings "PSWorkerInProcConcurrencyUpperBound=10"
+Update-AzFunctionAppSetting -ResourceGroupName $rgName `
+    -Name $functionAppName `
+    -AppSetting @{"PSWorkerInProcConcurrencyUpperBound"= 10}
 
 # Create a new eventgrid subscription on the resource group for stop/deallocate VM events to trigger restartVM-EventGrid function
 # Endpoint for Function App requires system key, that can be obtained with API call with master key. Master key can be obtained from AppSettings.
