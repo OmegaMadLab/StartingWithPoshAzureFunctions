@@ -19,7 +19,7 @@ $mail = @{
         }
     )
     "from" = @{ 
-        "email" = "AzFunctionDemo@omegamadlab.test" 
+        "email" = "AzFunctionDemo@omegamadlab.com" 
     }        
     "subject" = "Unattached disk report"
     "content" = @(
