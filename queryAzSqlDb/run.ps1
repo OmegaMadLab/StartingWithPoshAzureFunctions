@@ -11,7 +11,11 @@ try {
     Write-Information "Query Azure SQL Database..."
     $sqlCred = [PsCredential]::new($env:SqlAdmin, $(ConvertTo-SecureString -String $env:SqlAdminPwd -AsPlainText -Force))
     
-    $qryOut = Invoke-DbaQuery -SqlInstance $env:SqlServer `
+    $azSql = Connect-DbaInstance -SqlInstance $env:SqlServer `
+                -SqlCredential $sqlCred `
+                -TrustServerCertificate
+
+    $qryOut = Invoke-DbaQuery -SqlInstance $azSql `
                     -SqlCredential $sqlCred `
                     -Database "DemoDB" `
                     -Query "SELECT TOP 10 CustomerID, CompanyName, Phone FROM SalesLT.Customer"

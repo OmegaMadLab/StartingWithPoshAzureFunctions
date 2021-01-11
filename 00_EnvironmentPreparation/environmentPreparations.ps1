@@ -59,7 +59,7 @@ $sqlAdmin = Set-AzKeyVaultSecret -Name "sqlAdmin" `
                 -SecretValue (ConvertTo-SecureString "dbadmin" -AsPlainText -Force) `
                 -VaultName $keyVault.VaultName
 
-$sqlAdminPwd = Set-AzKeyVaultSecret -Name "sqlAdmin" `
+$sqlAdminPwd = Set-AzKeyVaultSecret -Name "sqlAdminPwd" `
                 -SecretValue (ConvertTo-SecureString "Passw0rd.1" -AsPlainText -Force) `
                 -VaultName $keyVault.VaultName
 
@@ -153,12 +153,12 @@ foreach ($functionAppName in $functionAppNames) {
     # - Azure SQL logical server URI and credentials, using Key Vault secrets
     $appSettings = @{
         "StorageQueueName" = "$($storQueue.Name)";
-        "AzureWebJobsSendGridApiKey" = "@Microsoft.KeyVault(SecretUri=$($secret.Id)^^)";
+        "AzureWebJobsSendGridApiKey" = "@Microsoft.KeyVault(SecretUri=$($secret.Id))";
         "ToMailAddress" = "$(Read-Host "Insert your mail address")";
         "WEBSITE_TIME_ZONE" = "W. Europe Standard Time";
         "sqlServer" = "$($sqlSrv.FullyQualifiedDomainName)";
-        "SqlAdmin" = "@Microsoft.KeyVault(SecretUri=$($sqlAdmin.Id)^^)";
-        "SqlAdminPwd" = "@Microsoft.KeyVault(SecretUri=$($sqlAdminPwd.Id)^^)";
+        "SqlAdmin" = "@Microsoft.KeyVault(SecretUri=$($sqlAdmin.Id))";
+        "SqlAdminPwd" = "@Microsoft.KeyVault(SecretUri=$($sqlAdminPwd.Id))";
     }
 
     $funcApp | Update-AzFunctionAppSetting -AppSetting $appSettings
