@@ -3,7 +3,7 @@
 $rgName="PoshAzFunctionDemo-RG"
 $location = "westeurope"
 
-# Get or create resource group
+# Get or create a resource group
 try {
     $Rg = Get-AzResourceGroup -Name $RgName -ErrorAction Stop
 } catch {
@@ -12,17 +12,31 @@ try {
 
 $subId = (Get-AzContext).Subscription.Id
 
-# Create a Key Vault to host secrets
+# Create a Key Vault to host the secrets
 # To create a key vault, you must be a member of the AAD tenant; guest account (Microsoft Account or users invited via Azure B2B) are not authorized to interact with vaults.
-$keyVault = New-AzKeyVault -Name ("PoshAzFuncDemoKV" + (Get-Random -max 9999999)) -ResourceGroupName $rgName -Location $location
-Set-AzKeyVaultAccessPolicy -UserPrincipalName (Get-AzContext).Account.Id -PermissionsToSecrets "list","set","get","delete" -VaultName $keyVault.VaultName -PassThru
+$keyVault = New-AzKeyVault -Name ("PoshAzFuncDemoKV" + (Get-Random -max 9999999)) `
+                -ResourceGroupName $rgName `
+                -Location $location `
+                -EnablePurgeProtection
 
-# Insert SendGrid API Key - info on account creation available at http://www.omegamadlab.com/2019/10/21/using-sendgrid-binding-from-powershell-in-azure-functions/
-$secret = Set-AzKeyVaultSecret -Name "SendGridApiKey" -SecretValue (Read-Host "Insert SendGrid API KEY" -AsSecureString) -VaultName $keyVault.VaultName
+Set-AzKeyVaultAccessPolicy -UserPrincipalName (Get-AzContext).Account.Id `
+    -PermissionsToSecrets "list","set","get","delete" `
+    -VaultName $keyVault.VaultName -PassThru
+
+# Insert the SendGrid API Key - info on account creation available at https://www.omegamadlab.com/2019/10/21/using-sendgrid-binding-from-powershell-in-azure-functions/
+$secret = Set-AzKeyVaultSecret -Name "SendGridApiKey" `
+            -SecretValue (Read-Host "Insert SendGrid API KEY" -AsSecureString) `
+            -VaultName $keyVault.VaultName
 
 # Create an unattached managed disk to test resourceReport function
-$diskConfig = New-AzDiskConfig -Location  $location -SkuName Standard_LRS -DiskSizeGB 10 -CreateOption Empty 
-$diskConfig | New-AzDisk -ResourceGroupName $rgName -DiskName "UnattachedDisk"
+$diskConfig = New-AzDiskConfig -Location $location `
+                -SkuName Standard_LRS `
+                -DiskSizeGB 10 `
+                -CreateOption Empty
+
+$diskConfig | 
+    New-AzDisk -ResourceGroupName $rgName `
+    -DiskName "UnattachedDisk"
 
 # Deploy an Azure SQL DB with AdventureWorksLT to test database connectivity from AzFunctions
 $sqlSrv = New-AzSqlServer -ServerName ("azsqlsrv" + (Get-Random -Maximum 9999999)) `
@@ -30,7 +44,9 @@ $sqlSrv = New-AzSqlServer -ServerName ("azsqlsrv" + (Get-Random -Maximum 9999999
             -ResourceGroupName $rgName `
             -SqlAdministratorCredentials (New-Object System.Management.Automation.PSCredential ("dbadmin", (ConvertTo-SecureString "Passw0rd.1" -AsPlainText -Force)))
 
-New-AzSqlServerFirewallRule -ServerName $sqlSrv.ServerName -AllowAllAzureIPs -ResourceGroupName $rgName
+New-AzSqlServerFirewallRule -ServerName $sqlSrv.ServerName `
+    -AllowAllAzureIPs `
+    -ResourceGroupName $rgName
 
 New-AzSqlDatabase -DatabaseName "DemoDB" `
     -ServerName $sqlSrv.ServerName `
@@ -39,11 +55,17 @@ New-AzSqlDatabase -DatabaseName "DemoDB" `
     -SampleName AdventureWorksLT
 
 # Store SQL credentials in KeyVault
-$sqlAdmin = Set-AzKeyVaultSecret -Name "sqlAdmin" -SecretValue (ConvertTo-SecureString "dbadmin" -AsPlainText -Force) -VaultName $keyVault.VaultName
-$sqlAdminPwd = Set-AzKeyVaultSecret -Name "sqlAdmin" -SecretValue (ConvertTo-SecureString "Passw0rd.1" -AsPlainText -Force) -VaultName $keyVault.VaultName
+$sqlAdmin = Set-AzKeyVaultSecret -Name "sqlAdmin" `
+                -SecretValue (ConvertTo-SecureString "dbadmin" -AsPlainText -Force) `
+                -VaultName $keyVault.VaultName
+
+$sqlAdminPwd = Set-AzKeyVaultSecret -Name "sqlAdmin" `
+                -SecretValue (ConvertTo-SecureString "Passw0rd.1" -AsPlainText -Force) `
+                -VaultName $keyVault.VaultName
 
 # Deploy a simple Windows VM to test vnet integration
-$deployment = New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/OmegaMadLab/LabTemplates/master/vnet.json -ResourceGroupName $rgName
+$deployment = New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/OmegaMadLab/LabTemplates/master/vnet.json `
+                -ResourceGroupName $rgName 
                 
 New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/OmegaMadLab/LabTemplates/master/WinVm.json `
     -envPrefix "Demo" `
@@ -87,69 +109,72 @@ foreach ($functionAppName in $functionAppNames) {
 
     if($functionAppName -like '*consumption*') {
         # Create function app on consumption plan
-        az functionapp create --name $functionAppName `
-            --resource-group $RgName `
-            --os-type Windows  `
-            --runtime Powershell `
-            --storage-account $storAccnt.StorageAccountName `
-            --consumption-plan-location $location
+        $funcApp = New-AzFunctionApp -ResourceGroupName $rgName `
+                        -Name $functionAppName `
+                        -Location 'westeurope' `
+                        -OSType 'Windows' `
+                        -Runtime 'PowerShell' `
+                        -StorageAccountName $storAccnt.StorageAccountName `
+                        -FunctionsVersion '3' `
+                        -RuntimeVersion '7.0' `
+                        -IdentityType 'SystemAssigned'
+
     } else {
         # Create a function app on dedicated plan used also for monitoring webapp
-        az functionapp create --name $functionAppName `
-            --resource-group $RgName `
-            --os-type Windows  `
-            --runtime Powershell `
-            --storage-account $storAccnt.StorageAccountName `
-            --plan "$siteName-plan"
+
+        $funcApp = New-AzFunctionApp -ResourceGroupName $rgName `
+                    -Name $functionAppName `
+                    -OSType 'Windows' `
+                    -Runtime 'PowerShell' `
+                    -StorageAccountName $storAccnt.StorageAccountName `
+                    -FunctionsVersion '3' `
+                    -RuntimeVersion '7.0' `
+                    -PlanName "$siteName-plan"`
+                    -IdentityType 'SystemAssigned'
+
     }
     
-    # Assign a managed identity and add contributor permission on RG
-    az functionapp identity assign --name $functionAppName `
-        --resource-group $rgName `
-        --role "Contributor" `
-        --scope "/subscriptions/$subId/resourceGroups/$rgName"
+    # Assign the contributor role on the RG to the system assigned managed identity
+    New-AzRoleAssignment -ResourceGroupName $rgName `
+        -RoleDefinitionName "Contributor" `
+        -ObjectId $funcApp.IdentityPrincipalId
 
-    # Adding AppSetting for storage queue name
-    az functionapp config appsettings set -n $functionAppName -g $rgName `
-        --settings "StorageQueueName=$($storQueue.Name)"
+    # Adding an Access Policy on the KeyVault for the Function system assigned managed identity
+    Set-AzKeyVaultAccessPolicy -ObjectId $funcApp.IdentityPrincipalId `
+        -PermissionsToSecrets "get" `
+        -VaultName $keyVault.VaultName `
+        -PassThru
 
-    # Adding SendGrid API Key to Function App by referencing KeyVault
-    az functionapp config appsettings set -n $functionAppName -g $rgName `
-        --settings "AzureWebJobsSendGridApiKey=@Microsoft.KeyVault(SecretUri=$($secret.Id)^^)"
+    # Adding AppSetting for:
+    # - storage queue name
+    # - SendGrid API Key, using a Key Vault secret
+    # - recipient e-mail address for scheduled report
+    # - timezone for the timer trigger
+    # - Azure SQL logical server URI and credentials, using Key Vault secrets
+    $appSettings = @{
+        "StorageQueueName" = "$($storQueue.Name)";
+        "AzureWebJobsSendGridApiKey" = "@Microsoft.KeyVault(SecretUri=$($secret.Id)^^)";
+        "ToMailAddress" = "$(Read-Host "Insert your mail address")";
+        "WEBSITE_TIME_ZONE" = "W. Europe Standard Time";
+        "sqlServer" = "$($sqlSrv.FullyQualifiedDomainName)";
+        "SqlAdmin" = "@Microsoft.KeyVault(SecretUri=$($sqlAdmin.Id)^^)";
+        "SqlAdminPwd" = "@Microsoft.KeyVault(SecretUri=$($sqlAdminPwd.Id)^^)";
+    }
 
-    # Setting recipient email address for scheduled report
-    az functionapp config appsettings set -n $functionAppName -g $rgName `
-        --settings "ToMailAddress=$(Read-Host "Insert your mail address")"
+    $funcApp | Update-AzFunctionAppSetting -AppSetting $appSettings
 
-    # Setting timezone for timer trigger
-    az functionapp config appsettings set -n $functionAppName -g $rgName `
-        --settings "WEBSITE_TIME_ZONE=W. Europe Standard Time"
-
-    # Adding AppSettings for SQL url and credentials
-    az functionapp config appsettings set -n $functionAppName -g $rgName `
-        --settings "sqlServer=$($sqlSrv.FullyQualifiedDomainName)"
-
-    az functionapp config appsettings set -n $functionAppName -g $rgName `
-        --settings "SqlAdmin=@Microsoft.KeyVault(SecretUri=$($sqlAdmin.Id)^^)"
-    
-    az functionapp config appsettings set -n $functionAppName -g $rgName `
-        --settings "SqlAdminPwd=@Microsoft.KeyVault(SecretUri=$($sqlAdminPwd.Id)^^)"
-
-    # Adding an Access Policy on KeyVault for Function managed identity
-    $managedId = (Get-AzWebApp -Name $functionAppName -ResourceGroupName $rgName).Identity.PrincipalId
-    Set-AzKeyVaultAccessPolicy -ObjectId $managedId -PermissionsToSecrets "get" -VaultName $keyVault.VaultName -PassThru
-
-    # Configure integration with GitHub repo
-    az functionapp deployment source config `
-        --branch master `
-        --name $functionAppName `
-        --repo-url https://github.com/OmegaMadLab/StartingWithPoshAzureFunctions `
-        --resource-group $rgName `
-        --manual-integration
 }
 
 # applying custom configurations on dedicated plan
-$functionAppName = (Get-AzWebApp -ResourceGroupName $rgName | ? Name -like '*dedicated*').Name
+$functionAppName = (Get-AzFunctionApp -ResourceGroupName $rgName | ? Name -like '*dedicated*').Name
+
+# Configure integration with GitHub repo
+az functionapp deployment source config `
+    --branch wip `
+    --name $functionAppName `
+    --repo-url https://github.com/OmegaMadLab/StartingWithPoshAzureFunctions `
+    --resource-group $rgName `
+    --manual-integration
 
 # Enable concurrency for PowerShell workers - may lead to timeouts with consumption plan
 az functionapp config appsettings set -n $functionAppName -g $rgName `

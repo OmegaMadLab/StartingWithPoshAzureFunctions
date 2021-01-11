@@ -7,5 +7,6 @@
       "queueName": "%StorageQueueName%",
       "connection": "AzureWebJobsStorage"
     }
-  ]
+  ],
+  "disabled": "true"
 }

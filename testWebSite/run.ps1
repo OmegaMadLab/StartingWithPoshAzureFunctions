@@ -21,7 +21,7 @@ if ($ip) {
 }
 else {
     $status = [HttpStatusCode]::BadRequest
-    $body = "Please pass a computer name on the query string or in the request body."
+    $body = "Please pass a webserver private IP on the query string or in the request body."
 }
 
 # Associate values to output bindings by calling 'Push-OutputBinding'.
