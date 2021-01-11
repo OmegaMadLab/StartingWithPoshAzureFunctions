@@ -8,15 +8,11 @@ Write-Information "PowerShell HTTP trigger function processed a request."
 
 # query SQL using secrets from KeyVault (referenced in appSettings)
 try {
-    Write-Information "Query Azure SQL Database..."
-    $sqlCred = [PsCredential]::new($env:SqlAdmin, $(ConvertTo-SecureString -String $env:SqlAdminPwd -AsPlainText -Force))
+    Write-Information "Querying Azure SQL Database..."
     
-    $azSql = Connect-DbaInstance -SqlInstance $env:SqlServer `
-                -SqlCredential $sqlCred `
-                -TrustServerCertificate
-
-    $qryOut = Invoke-DbaQuery -SqlInstance $azSql `
-                    -SqlCredential $sqlCred `
+    $qryOut = Invoke-Sqlcmd -serverInstance $env:sqlServer `
+                    -Username $env:sqlAdmin `
+                    -Password $env:sqlAdminPwd `
                     -Database "DemoDB" `
                     -Query "SELECT TOP 10 CustomerID, CompanyName, Phone FROM SalesLT.Customer"
     Write-Information "Query executed."

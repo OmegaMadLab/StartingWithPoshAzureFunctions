@@ -1,0 +1,362 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Microsoft.PowerShell.Commands.PSRepositoryItemInfo</T>
+      <T>System.Management.Automation.PSCustomObject</T>
+      <T>System.Object</T>
+    </TN>
+    <MS>
+      <S N="Name">SqlServer</S>
+      <S N="Version">21.1.18230</S>
+      <S N="Type">Module</S>
+      <S N="Description">This module allows SQL Server developers, administrators and business intelligence professionals to automate database development and server administration, as well as both multidimensional and tabular cube processing._x000D__x000A__x000D__x000A_For Release Notes, expand the Package Details section on this page._x000D__x000A__x000D__x000A_For automation with SSRS &amp; Power BI Report Server, use the ReportingServicesTools module available at https://www.powershellgallery.com/packages/ReportingServicesTools</S>
+      <S N="Author">Microsoft Corporation</S>
+      <S N="CompanyName">matteot_msft</S>
+      <S N="Copyright">Copyright (c) 2020 Microsoft. All rights reserved.</S>
+      <DT N="PublishedDate">2020-11-30T17:53:59+01:00</DT>
+      <Nil N="InstalledDate" />
+      <Nil N="UpdatedDate" />
+      <URI N="LicenseUri">https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell-license-terms</URI>
+      <Nil N="ProjectUri" />
+      <URI N="IconUri">https://go.microsoft.com/fwlink/?linkid=842808</URI>
+      <Obj N="Tags" RefId="1">
+        <TN RefId="1">
+          <T>System.Object[]</T>
+          <T>System.Array</T>
+          <T>System.Object</T>
+        </TN>
+        <LST>
+          <S>SQL</S>
+          <S>SqlServer</S>
+          <S>SQLPS</S>
+          <S>Databases</S>
+          <S>SqlAgent</S>
+          <S>Jobs</S>
+          <S>SSAS</S>
+          <S>AnalysisServices</S>
+          <S>Tabular</S>
+          <S>Cubes</S>
+          <S>SSIS</S>
+          <S>ExtendedEvents</S>
+          <S>xEvents</S>
+          <S>VulnerabilityAssessment</S>
+          <S>DataClassification</S>
+          <S>PSModule</S>
+        </LST>
+      </Obj>
+      <Obj N="Includes" RefId="2">
+        <TN RefId="2">
+          <T>System.Collections.Hashtable</T>
+          <T>System.Object</T>
+        </TN>
+        <DCT>
+          <En>
+            <S N="Key">Command</S>
+            <Obj N="Value" RefId="3">
+              <TNRef RefId="1" />
+              <LST>
+                <S>Add-RoleMember</S>
+                <S>Add-SqlAvailabilityDatabase</S>
+                <S>Add-SqlAvailabilityGroupListenerStaticIp</S>
+                <S>Add-SqlAzureAuthenticationContext</S>
+                <S>Add-SqlColumnEncryptionKeyValue</S>
+                <S>Add-SqlFirewallRule</S>
+                <S>Add-SqlLogin</S>
+                <S>Backup-ASDatabase</S>
+                <S>Backup-SqlDatabase</S>
+                <S>Complete-SqlColumnMasterKeyRotation</S>
+                <S>ConvertFrom-EncodedSqlName</S>
+                <S>ConvertTo-EncodedSqlName</S>
+                <S>Convert-UrnToPath</S>
+                <S>Disable-SqlAlwaysOn</S>
+                <S>Enable-SqlAlwaysOn</S>
+                <S>Export-SqlVulnerabilityAssessmentBaselineSet</S>
+                <S>Export-SqlVulnerabilityAssessmentScan</S>
+                <S>Get-SqlAgent</S>
+                <S>Get-SqlAgentJob</S>
+                <S>Get-SqlAgentJobHistory</S>
+                <S>Get-SqlAgentJobSchedule</S>
+                <S>Get-SqlAgentJobStep</S>
+                <S>Get-SqlAgentSchedule</S>
+                <S>Get-SqlAssessmentItem</S>
+                <S>Get-SqlBackupHistory</S>
+                <S>Get-SqlColumnEncryptionKey</S>
+                <S>Get-SqlColumnMasterKey</S>
+                <S>Get-SqlCredential</S>
+                <S>Get-SqlDatabase</S>
+                <S>Get-SqlErrorLog</S>
+                <S>Get-SqlInstance</S>
+                <S>Get-SqlLogin</S>
+                <S>Get-SqlSensitivityClassification</S>
+                <S>Get-SqlSensitivityRecommendations</S>
+                <S>Get-SqlSmartAdmin</S>
+                <S>Grant-SqlAvailabilityGroupCreateAnyDatabase</S>
+                <S>Invoke-SqlAssessment</S>
+                <S>Import-SqlVulnerabilityAssessmentBaselineSet</S>
+                <S>Invoke-ASCmd</S>
+                <S>Invoke-PolicyEvaluation</S>
+                <S>Invoke-ProcessASDatabase</S>
+                <S>Invoke-ProcessCube</S>
+                <S>Invoke-ProcessDimension</S>
+                <S>Invoke-ProcessPartition</S>
+                <S>Invoke-ProcessTable</S>
+                <S>Invoke-Sqlcmd</S>
+                <S>Invoke-SqlColumnMasterKeyRotation</S>
+                <S>Invoke-SqlVulnerabilityAssessmentScan</S>
+                <S>Join-SqlAvailabilityGroup</S>
+                <S>Merge-Partition</S>
+                <S>New-RestoreFolder</S>
+                <S>New-RestoreLocation</S>
+                <S>New-SqlAvailabilityGroup</S>
+                <S>New-SqlAvailabilityGroupListener</S>
+                <S>New-SqlAvailabilityReplica</S>
+                <S>New-SqlAzureKeyVaultColumnMasterKeySettings</S>
+                <S>New-SqlBackupEncryptionOption</S>
+                <S>New-SqlCertificateStoreColumnMasterKeySettings</S>
+                <S>New-SqlCngColumnMasterKeySettings</S>
+                <S>New-SqlColumnEncryptionKey</S>
+                <S>New-SqlColumnEncryptionKeyEncryptedValue</S>
+                <S>New-SqlColumnEncryptionSettings</S>
+                <S>New-SqlColumnMasterKey</S>
+                <S>New-SqlColumnMasterKeySettings</S>
+                <S>New-SqlCredential</S>
+                <S>New-SqlCspColumnMasterKeySettings</S>
+                <S>New-SqlHADREndpoint</S>
+                <S>New-SqlVulnerabilityAssessmentBaseline</S>
+                <S>New-SqlVulnerabilityAssessmentBaselineSet</S>
+                <S>Read-SqlTableData</S>
+                <S>Read-SqlViewData</S>
+                <S>Read-SqlXEvent</S>
+                <S>Remove-RoleMember</S>
+                <S>Remove-SqlAvailabilityDatabase</S>
+                <S>Remove-SqlAvailabilityGroup</S>
+                <S>Remove-SqlAvailabilityReplica</S>
+                <S>Remove-SqlColumnEncryptionKey</S>
+                <S>Remove-SqlColumnEncryptionKeyValue</S>
+                <S>Remove-SqlColumnMasterKey</S>
+                <S>Remove-SqlCredential</S>
+                <S>Remove-SqlFirewallRule</S>
+                <S>Remove-SqlLogin</S>
+                <S>Remove-SqlSensitivityClassification</S>
+                <S>Restore-ASDatabase</S>
+                <S>Restore-SqlDatabase</S>
+                <S>Resume-SqlAvailabilityDatabase</S>
+                <S>Revoke-SqlAvailabilityGroupCreateAnyDatabase</S>
+                <S>Save-SqlMigrationReport</S>
+                <S>Set-SqlAuthenticationMode</S>
+                <S>Set-SqlAvailabilityGroup</S>
+                <S>Set-SqlAvailabilityGroupListener</S>
+                <S>Set-SqlAvailabilityReplica</S>
+                <S>Set-SqlAvailabilityReplicaRoleToSecondary</S>
+                <S>Set-SqlColumnEncryption</S>
+                <S>Set-SqlCredential</S>
+                <S>Set-SqlErrorLog</S>
+                <S>Set-SqlHADREndpoint</S>
+                <S>Set-SqlNetworkConfiguration</S>
+                <S>Set-SqlSensitivityClassification</S>
+                <S>Set-SqlSmartAdmin</S>
+                <S>Start-SqlInstance</S>
+                <S>Stop-SqlInstance</S>
+                <S>Suspend-SqlAvailabilityDatabase</S>
+                <S>Switch-SqlAvailabilityGroup</S>
+                <S>Test-SqlAvailabilityGroup</S>
+                <S>Test-SqlAvailabilityReplica</S>
+                <S>Test-SqlDatabaseReplicaState</S>
+                <S>Test-SqlSmartAdmin</S>
+                <S>Write-SqlTableData</S>
+                <S>Invoke-SqlNotebook</S>
+                <S>SQLSERVER:</S>
+              </LST>
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">Workflow</S>
+            <Obj N="Value" RefId="4">
+              <TNRef RefId="1" />
+              <LST />
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">Cmdlet</S>
+            <Obj N="Value" RefId="5">
+              <TNRef RefId="1" />
+              <LST>
+                <S>Add-RoleMember</S>
+                <S>Add-SqlAvailabilityDatabase</S>
+                <S>Add-SqlAvailabilityGroupListenerStaticIp</S>
+                <S>Add-SqlAzureAuthenticationContext</S>
+                <S>Add-SqlColumnEncryptionKeyValue</S>
+                <S>Add-SqlFirewallRule</S>
+                <S>Add-SqlLogin</S>
+                <S>Backup-ASDatabase</S>
+                <S>Backup-SqlDatabase</S>
+                <S>Complete-SqlColumnMasterKeyRotation</S>
+                <S>ConvertFrom-EncodedSqlName</S>
+                <S>ConvertTo-EncodedSqlName</S>
+                <S>Convert-UrnToPath</S>
+                <S>Disable-SqlAlwaysOn</S>
+                <S>Enable-SqlAlwaysOn</S>
+                <S>Export-SqlVulnerabilityAssessmentBaselineSet</S>
+                <S>Export-SqlVulnerabilityAssessmentScan</S>
+                <S>Get-SqlAgent</S>
+                <S>Get-SqlAgentJob</S>
+                <S>Get-SqlAgentJobHistory</S>
+                <S>Get-SqlAgentJobSchedule</S>
+                <S>Get-SqlAgentJobStep</S>
+                <S>Get-SqlAgentSchedule</S>
+                <S>Get-SqlAssessmentItem</S>
+                <S>Get-SqlBackupHistory</S>
+                <S>Get-SqlColumnEncryptionKey</S>
+                <S>Get-SqlColumnMasterKey</S>
+                <S>Get-SqlCredential</S>
+                <S>Get-SqlDatabase</S>
+                <S>Get-SqlErrorLog</S>
+                <S>Get-SqlInstance</S>
+                <S>Get-SqlLogin</S>
+                <S>Get-SqlSensitivityClassification</S>
+                <S>Get-SqlSensitivityRecommendations</S>
+                <S>Get-SqlSmartAdmin</S>
+                <S>Grant-SqlAvailabilityGroupCreateAnyDatabase</S>
+                <S>Invoke-SqlAssessment</S>
+                <S>Import-SqlVulnerabilityAssessmentBaselineSet</S>
+                <S>Invoke-ASCmd</S>
+                <S>Invoke-PolicyEvaluation</S>
+                <S>Invoke-ProcessASDatabase</S>
+                <S>Invoke-ProcessCube</S>
+                <S>Invoke-ProcessDimension</S>
+                <S>Invoke-ProcessPartition</S>
+                <S>Invoke-ProcessTable</S>
+                <S>Invoke-Sqlcmd</S>
+                <S>Invoke-SqlColumnMasterKeyRotation</S>
+                <S>Invoke-SqlVulnerabilityAssessmentScan</S>
+                <S>Join-SqlAvailabilityGroup</S>
+                <S>Merge-Partition</S>
+                <S>New-RestoreFolder</S>
+                <S>New-RestoreLocation</S>
+                <S>New-SqlAvailabilityGroup</S>
+                <S>New-SqlAvailabilityGroupListener</S>
+                <S>New-SqlAvailabilityReplica</S>
+                <S>New-SqlAzureKeyVaultColumnMasterKeySettings</S>
+                <S>New-SqlBackupEncryptionOption</S>
+                <S>New-SqlCertificateStoreColumnMasterKeySettings</S>
+                <S>New-SqlCngColumnMasterKeySettings</S>
+                <S>New-SqlColumnEncryptionKey</S>
+                <S>New-SqlColumnEncryptionKeyEncryptedValue</S>
+                <S>New-SqlColumnEncryptionSettings</S>
+                <S>New-SqlColumnMasterKey</S>
+                <S>New-SqlColumnMasterKeySettings</S>
+                <S>New-SqlCredential</S>
+                <S>New-SqlCspColumnMasterKeySettings</S>
+                <S>New-SqlHADREndpoint</S>
+                <S>New-SqlVulnerabilityAssessmentBaseline</S>
+                <S>New-SqlVulnerabilityAssessmentBaselineSet</S>
+                <S>Read-SqlTableData</S>
+                <S>Read-SqlViewData</S>
+                <S>Read-SqlXEvent</S>
+                <S>Remove-RoleMember</S>
+                <S>Remove-SqlAvailabilityDatabase</S>
+                <S>Remove-SqlAvailabilityGroup</S>
+                <S>Remove-SqlAvailabilityReplica</S>
+                <S>Remove-SqlColumnEncryptionKey</S>
+                <S>Remove-SqlColumnEncryptionKeyValue</S>
+                <S>Remove-SqlColumnMasterKey</S>
+                <S>Remove-SqlCredential</S>
+                <S>Remove-SqlFirewallRule</S>
+                <S>Remove-SqlLogin</S>
+                <S>Remove-SqlSensitivityClassification</S>
+                <S>Restore-ASDatabase</S>
+                <S>Restore-SqlDatabase</S>
+                <S>Resume-SqlAvailabilityDatabase</S>
+                <S>Revoke-SqlAvailabilityGroupCreateAnyDatabase</S>
+                <S>Save-SqlMigrationReport</S>
+                <S>Set-SqlAuthenticationMode</S>
+                <S>Set-SqlAvailabilityGroup</S>
+                <S>Set-SqlAvailabilityGroupListener</S>
+                <S>Set-SqlAvailabilityReplica</S>
+                <S>Set-SqlAvailabilityReplicaRoleToSecondary</S>
+                <S>Set-SqlColumnEncryption</S>
+                <S>Set-SqlCredential</S>
+                <S>Set-SqlErrorLog</S>
+                <S>Set-SqlHADREndpoint</S>
+                <S>Set-SqlNetworkConfiguration</S>
+                <S>Set-SqlSensitivityClassification</S>
+                <S>Set-SqlSmartAdmin</S>
+                <S>Start-SqlInstance</S>
+                <S>Stop-SqlInstance</S>
+                <S>Suspend-SqlAvailabilityDatabase</S>
+                <S>Switch-SqlAvailabilityGroup</S>
+                <S>Test-SqlAvailabilityGroup</S>
+                <S>Test-SqlAvailabilityReplica</S>
+                <S>Test-SqlDatabaseReplicaState</S>
+                <S>Test-SqlSmartAdmin</S>
+                <S>Write-SqlTableData</S>
+              </LST>
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">RoleCapability</S>
+            <Ref N="Value" RefId="4" />
+          </En>
+          <En>
+            <S N="Key">DscResource</S>
+            <Ref N="Value" RefId="4" />
+          </En>
+          <En>
+            <S N="Key">Function</S>
+            <Obj N="Value" RefId="6">
+              <TNRef RefId="1" />
+              <LST>
+                <S>Invoke-SqlNotebook</S>
+                <S>SQLSERVER:</S>
+              </LST>
+            </Obj>
+          </En>
+        </DCT>
+      </Obj>
+      <Nil N="PowerShellGetFormatVersion" />
+      <S N="ReleaseNotes">## 21.1.18230_x000D__x000A_Updates:_x000D__x000A_* Introduced support of sensitivity rank when classifying database columns, or when reading_x000D__x000A_  columns classifications or recommendations._x000D__x000A_* Updated VulnerabilityAssessment Cmdlets to match the functionality of SSMS VulnerabilityAssessment scan_x000D__x000A_* Adding support for Power BI Premium Gen2 workspaces_x000D__x000A_Fixes:_x000D__x000A_* Fixed an issue in Read-SqlXEvent where the -FileName parameter was not working_x000D__x000A_  when using relative paths.</S>
+      <Obj N="Dependencies" RefId="7">
+        <TNRef RefId="1" />
+        <LST />
+      </Obj>
+      <S N="RepositorySourceLocation">https://www.powershellgallery.com/api/v2</S>
+      <S N="Repository">PSGallery</S>
+      <S N="PackageManagementProvider">NuGet</S>
+      <Obj N="AdditionalMetadata" RefId="8">
+        <TN RefId="3">
+          <T>System.Management.Automation.PSCustomObject</T>
+          <T>System.Object</T>
+        </TN>
+        <MS>
+          <S N="copyright">Copyright (c) 2020 Microsoft. All rights reserved.</S>
+          <S N="description">This module allows SQL Server developers, administrators and business intelligence professionals to automate database development and server administration, as well as both multidimensional and tabular cube processing._x000D__x000A__x000D__x000A_For Release Notes, expand the Package Details section on this page._x000D__x000A__x000D__x000A_For automation with SSRS &amp; Power BI Report Server, use the ReportingServicesTools module available at https://www.powershellgallery.com/packages/ReportingServicesTools</S>
+          <S N="requireLicenseAcceptance">False</S>
+          <S N="releaseNotes">## 21.1.18230_x000D__x000A_Updates:_x000D__x000A_* Introduced support of sensitivity rank when classifying database columns, or when reading_x000D__x000A_  columns classifications or recommendations._x000D__x000A_* Updated VulnerabilityAssessment Cmdlets to match the functionality of SSMS VulnerabilityAssessment scan_x000D__x000A_* Adding support for Power BI Premium Gen2 workspaces_x000D__x000A_Fixes:_x000D__x000A_* Fixed an issue in Read-SqlXEvent where the -FileName parameter was not working_x000D__x000A_  when using relative paths.</S>
+          <S N="isLatestVersion">True</S>
+          <S N="isAbsoluteLatestVersion">True</S>
+          <S N="versionDownloadCount">2023642</S>
+          <S N="downloadCount">15146747</S>
+          <S N="packageSize">24918459</S>
+          <S N="published">30/11/2020 17:53:59 +01:00</S>
+          <S N="created">30/11/2020 17:53:59 +01:00</S>
+          <S N="lastUpdated">11/01/2021 20:50:22 +01:00</S>
+          <S N="tags">SQL SqlServer SQLPS Databases SqlAgent Jobs SSAS AnalysisServices Tabular Cubes SSIS ExtendedEvents xEvents VulnerabilityAssessment DataClassification PSModule PSCmdlet_Add-RoleMember PSCommand_Add-RoleMember PSCmdlet_Add-SqlAvailabilityDatabase PSCommand_Add-SqlAvailabilityDatabase PSCmdlet_Add-SqlAvailabilityGroupListenerStaticIp PSCommand_Add-SqlAvailabilityGroupListenerStaticIp PSCmdlet_Add-SqlAzureAuthenticationContext PSCommand_Add-SqlAzureAuthenticationContext PSCmdlet_Add-SqlColumnEncryptionKeyValue PSCommand_Add-SqlColumnEncryptionKeyValue PSCmdlet_Add-SqlFirewallRule PSCommand_Add-SqlFirewallRule PSCmdlet_Add-SqlLogin PSCommand_Add-SqlLogin PSCmdlet_Backup-ASDatabase PSCommand_Backup-ASDatabase PSCmdlet_Backup-SqlDatabase PSCommand_Backup-SqlDatabase PSCmdlet_Complete-SqlColumnMasterKeyRotation PSCommand_Complete-SqlColumnMasterKeyRotation PSCmdlet_ConvertFrom-EncodedSqlName PSCommand_ConvertFrom-EncodedSqlName PSCmdlet_ConvertTo-EncodedSqlName PSCommand_ConvertTo-EncodedSqlName PSCmdlet_Convert-UrnToPath PSCommand_Convert-UrnToPath PSCmdlet_Disable-SqlAlwaysOn PSCommand_Disable-SqlAlwaysOn PSCmdlet_Enable-SqlAlwaysOn PSCommand_Enable-SqlAlwaysOn PSCmdlet_Export-SqlVulnerabilityAssessmentBaselineSet PSCommand_Export-SqlVulnerabilityAssessmentBaselineSet PSCmdlet_Export-SqlVulnerabilityAssessmentScan PSCommand_Export-SqlVulnerabilityAssessmentScan PSCmdlet_Get-SqlAgent PSCommand_Get-SqlAgent PSCmdlet_Get-SqlAgentJob PSCommand_Get-SqlAgentJob PSCmdlet_Get-SqlAgentJobHistory PSCommand_Get-SqlAgentJobHistory PSCmdlet_Get-SqlAgentJobSchedule PSCommand_Get-SqlAgentJobSchedule PSCmdlet_Get-SqlAgentJobStep PSCommand_Get-SqlAgentJobStep PSCmdlet_Get-SqlAgentSchedule PSCommand_Get-SqlAgentSchedule PSCmdlet_Get-SqlAssessmentItem PSCommand_Get-SqlAssessmentItem PSCmdlet_Get-SqlBackupHistory PSCommand_Get-SqlBackupHistory PSCmdlet_Get-SqlColumnEncryptionKey PSCommand_Get-SqlColumnEncryptionKey PSCmdlet_Get-SqlColumnMasterKey PSCommand_Get-SqlColumnMasterKey PSCmdlet_Get-SqlCredential PSCommand_Get-SqlCredential PSCmdlet_Get-SqlDatabase PSCommand_Get-SqlDatabase PSCmdlet_Get-SqlErrorLog PSCommand_Get-SqlErrorLog PSCmdlet_Get-SqlInstance PSCommand_Get-SqlInstance PSCmdlet_Get-SqlLogin PSCommand_Get-SqlLogin PSCmdlet_Get-SqlSensitivityClassification PSCommand_Get-SqlSensitivityClassification PSCmdlet_Get-SqlSensitivityRecommendations PSCommand_Get-SqlSensitivityRecommendations PSCmdlet_Get-SqlSmartAdmin PSCommand_Get-SqlSmartAdmin PSCmdlet_Grant-SqlAvailabilityGroupCreateAnyDatabase PSCommand_Grant-SqlAvailabilityGroupCreateAnyDatabase PSCmdlet_Invoke-SqlAssessment PSCommand_Invoke-SqlAssessment PSCmdlet_Import-SqlVulnerabilityAssessmentBaselineSet PSCommand_Import-SqlVulnerabilityAssessmentBaselineSet PSCmdlet_Invoke-ASCmd PSCommand_Invoke-ASCmd PSCmdlet_Invoke-PolicyEvaluation PSCommand_Invoke-PolicyEvaluation PSCmdlet_Invoke-ProcessASDatabase PSCommand_Invoke-ProcessASDatabase PSCmdlet_Invoke-ProcessCube PSCommand_Invoke-ProcessCube PSCmdlet_Invoke-ProcessDimension PSCommand_Invoke-ProcessDimension PSCmdlet_Invoke-ProcessPartition PSCommand_Invoke-ProcessPartition PSCmdlet_Invoke-ProcessTable PSCommand_Invoke-ProcessTable PSCmdlet_Invoke-Sqlcmd PSCommand_Invoke-Sqlcmd PSCmdlet_Invoke-SqlColumnMasterKeyRotation PSCommand_Invoke-SqlColumnMasterKeyRotation PSCmdlet_Invoke-SqlVulnerabilityAssessmentScan PSCommand_Invoke-SqlVulnerabilityAssessmentScan PSCmdlet_Join-SqlAvailabilityGroup PSCommand_Join-SqlAvailabilityGroup PSCmdlet_Merge-Partition PSCommand_Merge-Partition PSCmdlet_New-RestoreFolder PSCommand_New-RestoreFolder PSCmdlet_New-RestoreLocation PSCommand_New-RestoreLocation PSCmdlet_New-SqlAvailabilityGroup PSCommand_New-SqlAvailabilityGroup PSCmdlet_New-SqlAvailabilityGroupListener PSCommand_New-SqlAvailabilityGroupListener PSCmdlet_New-SqlAvailabilityReplica PSCommand_New-SqlAvailabilityReplica PSCmdlet_New-SqlAzureKeyVaultColumnMasterKeySettings PSCommand_New-SqlAzureKeyVaultColumnMasterKeySettings PSCmdlet_New-SqlBackupEncryptionOption PSCommand_New-SqlBackupEncryptionOption PSCmdlet_New-SqlCertificateStoreColumnMasterKeySettings PSCommand_New-SqlCertificateStoreColumnMasterKeySettings PSCmdlet_New-SqlCngColumnMasterKeySettings PSCommand_New-SqlCngColumnMasterKeySettings PSCmdlet_New-SqlColumnEncryptionKey PSCommand_New-SqlColumnEncryptionKey PSCmdlet_New-SqlColumnEncryptionKeyEncryptedValue PSCommand_New-SqlColumnEncryptionKeyEncryptedValue PSCmdlet_New-SqlColumnEncryptionSettings PSCommand_New-SqlColumnEncryptionSettings PSCmdlet_New-SqlColumnMasterKey PSCommand_New-SqlColumnMasterKey PSCmdlet_New-SqlColumnMasterKeySettings PSCommand_New-SqlColumnMasterKeySettings PSCmdlet_New-SqlCredential PSCommand_New-SqlCredential PSCmdlet_New-SqlCspColumnMasterKeySettings PSCommand_New-SqlCspColumnMasterKeySettings PSCmdlet_New-SqlHADREndpoint PSCommand_New-SqlHADREndpoint PSCmdlet_New-SqlVulnerabilityAssessmentBaseline PSCommand_New-SqlVulnerabilityAssessmentBaseline PSCmdlet_New-SqlVulnerabilityAssessmentBaselineSet PSCommand_New-SqlVulnerabilityAssessmentBaselineSet PSCmdlet_Read-SqlTableData PSCommand_Read-SqlTableData PSCmdlet_Read-SqlViewData PSCommand_Read-SqlViewData PSCmdlet_Read-SqlXEvent PSCommand_Read-SqlXEvent PSCmdlet_Remove-RoleMember PSCommand_Remove-RoleMember PSCmdlet_Remove-SqlAvailabilityDatabase PSCommand_Remove-SqlAvailabilityDatabase PSCmdlet_Remove-SqlAvailabilityGroup PSCommand_Remove-SqlAvailabilityGroup PSCmdlet_Remove-SqlAvailabilityReplica PSCommand_Remove-SqlAvailabilityReplica PSCmdlet_Remove-SqlColumnEncryptionKey PSCommand_Remove-SqlColumnEncryptionKey PSCmdlet_Remove-SqlColumnEncryptionKeyValue PSCommand_Remove-SqlColumnEncryptionKeyValue PSCmdlet_Remove-SqlColumnMasterKey PSCommand_Remove-SqlColumnMasterKey PSCmdlet_Remove-SqlCredential PSCommand_Remove-SqlCredential PSCmdlet_Remove-SqlFirewallRule PSCommand_Remove-SqlFirewallRule PSCmdlet_Remove-SqlLogin PSCommand_Remove-SqlLogin PSCmdlet_Remove-SqlSensitivityClassification PSCommand_Remove-SqlSensitivityClassification PSCmdlet_Restore-ASDatabase PSCommand_Restore-ASDatabase PSCmdlet_Restore-SqlDatabase PSCommand_Restore-SqlDatabase PSCmdlet_Resume-SqlAvailabilityDatabase PSCommand_Resume-SqlAvailabilityDatabase PSCmdlet_Revoke-SqlAvailabilityGroupCreateAnyDatabase PSCommand_Revoke-SqlAvailabilityGroupCreateAnyDatabase PSCmdlet_Save-SqlMigrationReport PSCommand_Save-SqlMigrationReport PSCmdlet_Set-SqlAuthenticationMode PSCommand_Set-SqlAuthenticationMode PSCmdlet_Set-SqlAvailabilityGroup PSCommand_Set-SqlAvailabilityGroup PSCmdlet_Set-SqlAvailabilityGroupListener PSCommand_Set-SqlAvailabilityGroupListener PSCmdlet_Set-SqlAvailabilityReplica PSCommand_Set-SqlAvailabilityReplica PSCmdlet_Set-SqlAvailabilityReplicaRoleToSecondary PSCommand_Set-SqlAvailabilityReplicaRoleToSecondary PSCmdlet_Set-SqlColumnEncryption PSCommand_Set-SqlColumnEncryption PSCmdlet_Set-SqlCredential PSCommand_Set-SqlCredential PSCmdlet_Set-SqlErrorLog PSCommand_Set-SqlErrorLog PSCmdlet_Set-SqlHADREndpoint PSCommand_Set-SqlHADREndpoint PSCmdlet_Set-SqlNetworkConfiguration PSCommand_Set-SqlNetworkConfiguration PSCmdlet_Set-SqlSensitivityClassification PSCommand_Set-SqlSensitivityClassification PSCmdlet_Set-SqlSmartAdmin PSCommand_Set-SqlSmartAdmin PSCmdlet_Start-SqlInstance PSCommand_Start-SqlInstance PSCmdlet_Stop-SqlInstance PSCommand_Stop-SqlInstance PSCmdlet_Suspend-SqlAvailabilityDatabase PSCommand_Suspend-SqlAvailabilityDatabase PSCmdlet_Switch-SqlAvailabilityGroup PSCommand_Switch-SqlAvailabilityGroup PSCmdlet_Test-SqlAvailabilityGroup PSCommand_Test-SqlAvailabilityGroup PSCmdlet_Test-SqlAvailabilityReplica PSCommand_Test-SqlAvailabilityReplica PSCmdlet_Test-SqlDatabaseReplicaState PSCommand_Test-SqlDatabaseReplicaState PSCmdlet_Test-SqlSmartAdmin PSCommand_Test-SqlSmartAdmin PSCmdlet_Write-SqlTableData PSCommand_Write-SqlTableData PSIncludes_Cmdlet PSFunction_Invoke-SqlNotebook PSCommand_Invoke-SqlNotebook PSFunction_SQLSERVER: PSCommand_SQLSERVER: PSIncludes_Function</S>
+          <S N="developmentDependency">False</S>
+          <S N="updated">2021-01-11T20:50:22Z</S>
+          <S N="NormalizedVersion">21.1.18230</S>
+          <S N="Authors">Microsoft Corporation</S>
+          <S N="IsPrerelease">false</S>
+          <S N="ItemType">Module</S>
+          <S N="FileList">SqlServer.nuspec|DataSec.Common.dll|DataSec.PAL.Interfaces.dll|DataSec.PAL.Local.dll|DataSec.PAL.Local.Storage.dll|DataSec.VA.Common.Imp.dll|DataSec.VA.Core.Baseline.dll|DataSec.VA.Core.Contract.dll|DataSec.VA.Core.Engine.dll|DataSec.VA.Core.Exporter.dll|DataSec.VA.Core.Model.Converter.dll|DataSec.VA.Core.Model.dll|DataSec.VA.Core.Rules.dll|DataSec.VA.Core.VACore.dll|DocumentFormat.OpenXml.dll|Microsoft.AnalysisServices.Core.dll|Microsoft.AnalysisServices.dll|Microsoft.AnalysisServices.PowerShell.Cmdlets.dll|Microsoft.AnalysisServices.PowerShell.Provider.dll|Microsoft.AnalysisServices.Tabular.dll|Microsoft.Azure.KeyVault.dll|Microsoft.Azure.KeyVault.WebKey.dll|Microsoft.Data.Tools.Schema.Sql.dll|Microsoft.Data.Tools.Utilities.dll|Microsoft.IdentityModel.Clients.ActiveDirectory.dll|Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll|Microsoft.InformationProtection.dll|Microsoft.PolyKit.dll|Microsoft.Rest.ClientRuntime.Azure.dll|Microsoft.Rest.ClientRuntime.dll|Microsoft.SqlServer.Assessment.Cmdlets.dll|Microsoft.SqlServer.Assessment.Cmdlets.Engine.dll|Microsoft.SqlServer.Assessment.format.ps1xml|Microsoft.SqlServer.Assessment.Types.dll|Microsoft.SqlServer.AzureStorageEnum.dll|Microsoft.SqlServer.BatchParser.dll|Microsoft.SqlServer.BatchParserClient.dll|Microsoft.SqlServer.ConnectionInfo.dll|Microsoft.SqlServer.ConnectionInfoExtended.dll|Microsoft.SqlServer.Dac.dll|Microsoft.SqlServer.Dac.Extensions.dll|Microsoft.SqlServer.DC.Contract.dll|Microsoft.SqlServer.DC.Engine.dll|Microsoft.SqlServer.Diagnostics.Strace.dll|Microsoft.SqlServer.Dmf.Common.dll|Microsoft.SqlServer.Dmf.dll|Microsoft.SqlServer.IntegrationServices.Common.ObjectModel.dll|Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.dll|Microsoft.SqlServer.Management.AlwaysEncrypted.Management.dll|Microsoft.SqlServer.Management.AlwaysEncrypted.Types.dll|Microsoft.SqlServer.Management.AzureAuthenticationManagement.dll|Microsoft.SqlServer.Management.CloudAdapter.Client.dll|Microsoft.SqlServer.Management.CloudAdapter.Data.dll|Microsoft.SqlServer.Management.Collector.dll|Microsoft.SqlServer.Management.CollectorEnum.dll|Microsoft.SqlServer.Management.Dac.UniversalAuthProvider.dll|Microsoft.SqlServer.Management.HadrDMF.dll|Microsoft.SqlServer.Management.InMemoryOLTPMigrationAdvisor.dll|microsoft.sqlserver.management.integrationservices.dll|Microsoft.SqlServer.Management.IntegrationServicesEnum.dll|Microsoft.SqlServer.Management.PSProvider.dll|Microsoft.SqlServer.Management.PSSnapins.dll|Microsoft.SqlServer.Management.RegisteredServers.dll|Microsoft.SqlServer.Management.Sdk.Scripting.dll|Microsoft.SqlServer.Management.Sdk.Sfc.dll|Microsoft.SqlServer.Management.SDK.SqlStudio.dll|Microsoft.SqlServer.Management.Utility.dll|Microsoft.SqlServer.Management.UtilityEnum.dll|Microsoft.SqlServer.Management.XEvent.dll|Microsoft.SqlServer.Management.XEventDbScoped.dll|Microsoft.SqlServer.Management.XEventDbScopedEnum.dll|Microsoft.SqlServer.Management.XEventEnum.dll|Microsoft.SqlServer.OlapEnum.dll|Microsoft.SqlServer.PolicyEnum.dll|Microsoft.SqlServer.RegSvrEnum.dll|Microsoft.SqlServer.ReplEnum.dll|Microsoft.SqlServer.ServiceBrokerEnum.dll|Microsoft.SqlServer.Smo.dll|Microsoft.SqlServer.SmoExtended.dll|Microsoft.SqlServer.SqlClrProvider.dll|Microsoft.SqlServer.SqlEnum.dll|Microsoft.SqlServer.SqlTDiagm.dll|Microsoft.SqlServer.SqlWmiManagement.dll|Microsoft.SqlServer.SString.dll|Microsoft.SqlServer.TransactSql.ScriptDom.dll|Microsoft.SqlServer.Types.dll|Microsoft.SqlServer.VA.Model.dll|Microsoft.SqlServer.WmiEnum.dll|Microsoft.SqlServer.XEvent.XELite.dll|msvcp120.dll|msvcr120.dll|Newtonsoft.Json.dll|sqlnotebook.psm1|SQLProvider.Format.ps1xml|SQLProvider.Types.ps1xml|SqlServer.psd1|SqlServer.psm1|SqlServerPostScript.ps1|coreclr\Microsoft.Data.Tools.Sql.BatchParser.dll|coreclr\Microsoft.SqlServer.Assessment.Cmdlets.dll|coreclr\Microsoft.SqlServer.Assessment.Cmdlets.Engine.dll|coreclr\Microsoft.SqlServer.Assessment.Types.dll|coreclr\Microsoft.SqlServer.ConnectionInfo.dll|coreclr\Microsoft.SqlServer.Management.Dmf.dll|coreclr\Microsoft.SqlServer.Management.PSProvider.dll|coreclr\Microsoft.SqlServer.Management.PSSnapins.dll|coreclr\Microsoft.SqlServer.Management.RegisteredServers.dll|coreclr\Microsoft.SqlServer.Management.Sdk.Sfc.dll|coreclr\Microsoft.SqlServer.Management.XEvent.dll|coreclr\Microsoft.SqlServer.Management.XEventDbScoped.dll|coreclr\Microsoft.SqlServer.Management.XEventDbScopedEnum.dll|coreclr\Microsoft.SqlServer.Management.XEventEnum.dll|coreclr\Microsoft.SqlServer.Smo.dll|coreclr\Microsoft.SqlServer.SmoExtended.dll|coreclr\Microsoft.SqlServer.SqlEnum.dll|coreclr\Microsoft.SqlServer.XEvent.XELite.dll|coreclr\Microsoft.SqlTools.Hosting.dll|coreclr\Microsoft.SqlTools.ManagedBatchParser.dll|coreclr\SqlServerPostScript.ps1|coreclr\System.Data.SqlClient.dll|coreclr\System.Security.SecureString.dll|de\Microsoft.AnalysisServices.Core.resources.dll|de\microsoft.analysisservices.powershell.cmdlets.dll-help.xml|de\Microsoft.AnalysisServices.resources.dll|de\Microsoft.AnalysisServices.Tabular.resources.dll|de\Microsoft.Data.Tools.Schema.Sql.resources.dll|de\Microsoft.Data.Tools.Utilities.resources.dll|de\Microsoft.SqlServer.ConnectionInfo.resources.dll|de\Microsoft.SqlServer.ConnectionInfoExtended.resources.dll|de\Microsoft.SqlServer.Dac.Extensions.resources.dll|de\Microsoft.SqlServer.Dac.resources.dll|de\Microsoft.SqlServer.Dmf.Common.resources.dll|de\Microsoft.SqlServer.Dmf.resources.dll|de\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll|de\Microsoft.SqlServer.Management.AlwaysEncrypted.Management.resources.dll|de\Microsoft.SqlServer.Management.AlwaysEncrypted.Types.resources.dll|de\Microsoft.SqlServer.Management.Collector.resources.dll|de\Microsoft.SqlServer.Management.CollectorEnum.resources.dll|de\Microsoft.SqlServer.Management.HadrDMF.resources.dll|de\Microsoft.SqlServer.Management.InMemoryOLTPMigrationAdvisor.resources.dll|de\Microsoft.SqlServer.Management.PSProvider.dll-Help.xml|de\Microsoft.SqlServer.Management.PSProvider.resources.dll|de\Microsoft.SqlServer.Management.PSSnapins.dll-Help.xml|de\Microsoft.SqlServer.Management.PSSnapins.resources.dll|de\Microsoft.SqlServer.Management.RegisteredServers.resources.dll|de\Microsoft.SqlServer.Management.Sdk.Scripting.resources.dll|de\Microsoft.SqlServer.Management.Sdk.Sfc.resources.dll|de\Microsoft.SqlServer.Management.SDK.SqlStudio.resources.dll|de\Microsoft.SqlServer.Management.Utility.resources.dll|de\Microsoft.SqlServer.Management.XEvent.resources.dll|de\Microsoft.SqlServer.Management.XEventDbScoped.resources.dll|de\Microsoft.SqlServer.Management.XEventDbScopedEnum.resources.dll|de\Microsoft.SqlServer.OlapEnum.resources.dll|de\Microsoft.SqlServer.RegSvrEnum.resources.dll|de\Microsoft.SqlServer.ServiceBrokerEnum.resources.dll|de\Microsoft.SqlServer.Smo.resources.dll|de\Microsoft.SqlServer.SmoExtended.resources.dll|de\Microsoft.SqlServer.SqlEnum.resources.dll|de\Microsoft.SqlServer.SqlWmiManagement.resources.dll|de\Microsoft.SqlServer.Types.resources.dll|de\Microsoft.SqlServer.WmiEnum.resources.dll|en\Microsoft.AnalysisServices.PowerShell.Cmdlets.dll-Help.xml|en\Microsoft.SqlServer.Assessment.Cmdlets.dll-Help.xml|en\Microsoft.SqlServer.Management.PSProvider.dll-Help.xml|en\Microsoft.SqlServer.Management.PSSnapins.dll-Help.xml|en\SqlServer-help.xml|es\Microsoft.AnalysisServices.Core.resources.dll|es\microsoft.analysisservices.powershell.cmdlets.dll-help.xml|es\Microsoft.AnalysisServices.resources.dll|es\Microsoft.AnalysisServices.Tabular.resources.dll|es\Microsoft.Data.Tools.Schema.Sql.resources.dll|es\Microsoft.Data.Tools.Utilities.resources.dll|es\Microsoft.SqlServer.ConnectionInfo.resources.dll|es\Microsoft.SqlServer.ConnectionInfoExtended.resources.dll|es\Microsoft.SqlServer.Dac.Extensions.resources.dll|es\Microsoft.SqlServer.Dac.resources.dll|es\Microsoft.SqlServer.Dmf.Common.resources.dll|es\Microsoft.SqlServer.Dmf.resources.dll|es\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll|es\Microsoft.SqlServer.Management.AlwaysEncrypted.Management.resources.dll|es\Microsoft.SqlServer.Management.AlwaysEncrypted.Types.resources.dll|es\Microsoft.SqlServer.Management.Collector.resources.dll|es\Microsoft.SqlServer.Management.CollectorEnum.resources.dll|es\Microsoft.SqlServer.Management.HadrDMF.resources.dll|es\Microsoft.SqlServer.Management.InMemoryOLTPMigrationAdvisor.resources.dll|es\Microsoft.SqlServer.Management.PSProvider.dll-Help.xml|es\Microsoft.SqlServer.Management.PSProvider.resources.dll|es\Microsoft.SqlServer.Management.PSSnapins.dll-Help.xml|es\Microsoft.SqlServer.Management.PSSnapins.resources.dll|es\Microsoft.SqlServer.Management.RegisteredServers.resources.dll|es\Microsoft.SqlServer.Management.Sdk.Scripting.resources.dll|es\Microsoft.SqlServer.Management.Sdk.Sfc.resources.dll|es\Microsoft.SqlServer.Management.SDK.SqlStudio.resources.dll|es\Microsoft.SqlServer.Management.Utility.resources.dll|es\Microsoft.SqlServer.Management.XEvent.resources.dll|es\Microsoft.SqlServer.Management.XEventDbScoped.resources.dll|es\Microsoft.SqlServer.Management.XEventDbScopedEnum.resources.dll|es\Microsoft.SqlServer.OlapEnum.resources.dll|es\Microsoft.SqlServer.RegSvrEnum.resources.dll|es\Microsoft.SqlServer.ServiceBrokerEnum.resources.dll|es\Microsoft.SqlServer.Smo.resources.dll|es\Microsoft.SqlServer.SmoExtended.resources.dll|es\Microsoft.SqlServer.SqlEnum.resources.dll|es\Microsoft.SqlServer.SqlWmiManagement.resources.dll|es\Microsoft.SqlServer.Types.resources.dll|es\Microsoft.SqlServer.WmiEnum.resources.dll|fr\Microsoft.AnalysisServices.Core.resources.dll|fr\microsoft.analysisservices.powershell.cmdlets.dll-help.xml|fr\Microsoft.AnalysisServices.resources.dll|fr\Microsoft.AnalysisServices.Tabular.resources.dll|fr\Microsoft.Data.Tools.Schema.Sql.resources.dll|fr\Microsoft.Data.Tools.Utilities.resources.dll|fr\Microsoft.SqlServer.ConnectionInfo.resources.dll|fr\Microsoft.SqlServer.ConnectionInfoExtended.resources.dll|fr\Microsoft.SqlServer.Dac.Extensions.resources.dll|fr\Microsoft.SqlServer.Dac.resources.dll|fr\Microsoft.SqlServer.Dmf.Common.resources.dll|fr\Microsoft.SqlServer.Dmf.resources.dll|fr\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll|fr\Microsoft.SqlServer.Management.AlwaysEncrypted.Management.resources.dll|fr\Microsoft.SqlServer.Management.AlwaysEncrypted.Types.resources.dll|fr\Microsoft.SqlServer.Management.Collector.resources.dll|fr\Microsoft.SqlServer.Management.CollectorEnum.resources.dll|fr\Microsoft.SqlServer.Management.HadrDMF.resources.dll|fr\Microsoft.SqlServer.Management.InMemoryOLTPMigrationAdvisor.resources.dll|fr\Microsoft.SqlServer.Management.PSProvider.dll-Help.xml|fr\Microsoft.SqlServer.Management.PSProvider.resources.dll|fr\Microsoft.SqlServer.Management.PSSnapins.dll-Help.xml|fr\Microsoft.SqlServer.Management.PSSnapins.resources.dll|fr\Microsoft.SqlServer.Management.RegisteredServers.resources.dll|fr\Microsoft.SqlServer.Management.Sdk.Scripting.resources.dll|fr\Microsoft.SqlServer.Management.Sdk.Sfc.resources.dll|fr\Microsoft.SqlServer.Management.SDK.SqlStudio.resources.dll|fr\Microsoft.SqlServer.Management.Utility.resources.dll|fr\Microsoft.SqlServer.Management.XEvent.resources.dll|fr\Microsoft.SqlServer.Management.XEventDbScoped.resources.dll|fr\Microsoft.SqlServer.Management.XEventDbScopedEnum.resources.dll|fr\Microsoft.SqlServer.OlapEnum.resources.dll|fr\Microsoft.SqlServer.RegSvrEnum.resources.dll|fr\Microsoft.SqlServer.ServiceBrokerEnum.resources.dll|fr\Microsoft.SqlServer.Smo.resources.dll|fr\Microsoft.SqlServer.SmoExtended.resources.dll|fr\Microsoft.SqlServer.SqlEnum.resources.dll|fr\Microsoft.SqlServer.SqlWmiManagement.resources.dll|fr\Microsoft.SqlServer.Types.resources.dll|fr\Microsoft.SqlServer.WmiEnum.resources.dll|it\Microsoft.AnalysisServices.Core.resources.dll|it\microsoft.analysisservices.powershell.cmdlets.dll-help.xml|it\Microsoft.AnalysisServices.resources.dll|it\Microsoft.AnalysisServices.Tabular.resources.dll|it\Microsoft.Data.Tools.Schema.Sql.resources.dll|it\Microsoft.Data.Tools.Utilities.resources.dll|it\Microsoft.SqlServer.ConnectionInfo.resources.dll|it\Microsoft.SqlServer.ConnectionInfoExtended.resources.dll|it\Microsoft.SqlServer.Dac.Extensions.resources.dll|it\Microsoft.SqlServer.Dac.resources.dll|it\Microsoft.SqlServer.Dmf.Common.resources.dll|it\Microsoft.SqlServer.Dmf.resources.dll|it\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll|it\Microsoft.SqlServer.Management.AlwaysEncrypted.Management.resources.dll|it\Microsoft.SqlServer.Management.AlwaysEncrypted.Types.resources.dll|it\Microsoft.SqlServer.Management.Collector.resources.dll|it\Microsoft.SqlServer.Management.CollectorEnum.resources.dll|it\Microsoft.SqlServer.Management.HadrDMF.resources.dll|it\Microsoft.SqlServer.Management.InMemoryOLTPMigrationAdvisor.resources.dll|it\Microsoft.SqlServer.Management.PSProvider.dll-Help.xml|it\Microsoft.SqlServer.Management.PSProvider.resources.dll|it\Microsoft.SqlServer.Management.PSSnapins.dll-Help.xml|it\Microsoft.SqlServer.Management.PSSnapins.resources.dll|it\Microsoft.SqlServer.Management.RegisteredServers.resources.dll|it\Microsoft.SqlServer.Management.Sdk.Scripting.resources.dll|it\Microsoft.SqlServer.Management.Sdk.Sfc.resources.dll|it\Microsoft.SqlServer.Management.SDK.SqlStudio.resources.dll|it\Microsoft.SqlServer.Management.Utility.resources.dll|it\Microsoft.SqlServer.Management.XEvent.resources.dll|it\Microsoft.SqlServer.Management.XEventDbScoped.resources.dll|it\Microsoft.SqlServer.Management.XEventDbScopedEnum.resources.dll|it\Microsoft.SqlServer.OlapEnum.resources.dll|it\Microsoft.SqlServer.RegSvrEnum.resources.dll|it\Microsoft.SqlServer.ServiceBrokerEnum.resources.dll|it\Microsoft.SqlServer.Smo.resources.dll|it\Microsoft.SqlServer.SmoExtended.resources.dll|it\Microsoft.SqlServer.SqlEnum.resources.dll|it\Microsoft.SqlServer.SqlWmiManagement.resources.dll|it\Microsoft.SqlServer.Types.resources.dll|it\Microsoft.SqlServer.WmiEnum.resources.dll|ja\Microsoft.AnalysisServices.Core.resources.dll|ja\microsoft.analysisservices.powershell.cmdlets.dll-help.xml|ja\Microsoft.AnalysisServices.resources.dll|ja\Microsoft.AnalysisServices.Tabular.resources.dll|ja\Microsoft.Data.Tools.Schema.Sql.resources.dll|ja\Microsoft.Data.Tools.Utilities.resources.dll|ja\Microsoft.SqlServer.ConnectionInfo.resources.dll|ja\Microsoft.SqlServer.ConnectionInfoExtended.resources.dll|ja\Microsoft.SqlServer.Dac.Extensions.resources.dll|ja\Microsoft.SqlServer.Dac.resources.dll|ja\Microsoft.SqlServer.Dmf.Common.resources.dll|ja\Microsoft.SqlServer.Dmf.resources.dll|ja\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll|ja\Microsoft.SqlServer.Management.AlwaysEncrypted.Management.resources.dll|ja\Microsoft.SqlServer.Management.AlwaysEncrypted.Types.resources.dll|ja\Microsoft.SqlServer.Management.Collector.resources.dll|ja\Microsoft.SqlServer.Management.CollectorEnum.resources.dll|ja\Microsoft.SqlServer.Management.HadrDMF.resources.dll|ja\Microsoft.SqlServer.Management.InMemoryOLTPMigrationAdvisor.resources.dll|ja\Microsoft.SqlServer.Management.PSProvider.dll-Help.xml|ja\Microsoft.SqlServer.Management.PSProvider.resources.dll|ja\Microsoft.SqlServer.Management.PSSnapins.dll-Help.xml|ja\Microsoft.SqlServer.Management.PSSnapins.resources.dll|ja\Microsoft.SqlServer.Management.RegisteredServers.resources.dll|ja\Microsoft.SqlServer.Management.Sdk.Scripting.resources.dll|ja\Microsoft.SqlServer.Management.Sdk.Sfc.resources.dll|ja\Microsoft.SqlServer.Management.SDK.SqlStudio.resources.dll|ja\Microsoft.SqlServer.Management.Utility.resources.dll|ja\Microsoft.SqlServer.Management.XEvent.resources.dll|ja\Microsoft.SqlServer.Management.XEventDbScoped.resources.dll|ja\Microsoft.SqlServer.Management.XEventDbScopedEnum.resources.dll|ja\Microsoft.SqlServer.OlapEnum.resources.dll|ja\Microsoft.SqlServer.RegSvrEnum.resources.dll|ja\Microsoft.SqlServer.ServiceBrokerEnum.resources.dll|ja\Microsoft.SqlServer.Smo.resources.dll|ja\Microsoft.SqlServer.SmoExtended.resources.dll|ja\Microsoft.SqlServer.SqlEnum.resources.dll|ja\Microsoft.SqlServer.SqlWmiManagement.resources.dll|ja\Microsoft.SqlServer.Types.resources.dll|ja\Microsoft.SqlServer.WmiEnum.resources.dll|ko\Microsoft.AnalysisServices.Core.resources.dll|ko\microsoft.analysisservices.powershell.cmdlets.dll-help.xml|ko\Microsoft.AnalysisServices.resources.dll|ko\Microsoft.AnalysisServices.Tabular.resources.dll|ko\Microsoft.Data.Tools.Schema.Sql.resources.dll|ko\Microsoft.Data.Tools.Utilities.resources.dll|ko\Microsoft.SqlServer.ConnectionInfo.resources.dll|ko\Microsoft.SqlServer.ConnectionInfoExtended.resources.dll|ko\Microsoft.SqlServer.Dac.Extensions.resources.dll|ko\Microsoft.SqlServer.Dac.resources.dll|ko\Microsoft.SqlServer.Dmf.Common.resources.dll|ko\Microsoft.SqlServer.Dmf.resources.dll|ko\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll|ko\Microsoft.SqlServer.Management.AlwaysEncrypted.Management.resources.dll|ko\Microsoft.SqlServer.Management.AlwaysEncrypted.Types.resources.dll|ko\Microsoft.SqlServer.Management.Collector.resources.dll|ko\Microsoft.SqlServer.Management.CollectorEnum.resources.dll|ko\Microsoft.SqlServer.Management.HadrDMF.resources.dll|ko\Microsoft.SqlServer.Management.InMemoryOLTPMigrationAdvisor.resources.dll|ko\Microsoft.SqlServer.Management.PSProvider.dll-Help.xml|ko\Microsoft.SqlServer.Management.PSProvider.resources.dll|ko\Microsoft.SqlServer.Management.PSSnapins.dll-Help.xml|ko\Microsoft.SqlServer.Management.PSSnapins.resources.dll|ko\Microsoft.SqlServer.Management.RegisteredServers.resources.dll|ko\Microsoft.SqlServer.Management.Sdk.Scripting.resources.dll|ko\Microsoft.SqlServer.Management.Sdk.Sfc.resources.dll|ko\Microsoft.SqlServer.Management.SDK.SqlStudio.resources.dll|ko\Microsoft.SqlServer.Management.Utility.resources.dll|ko\Microsoft.SqlServer.Management.XEvent.resources.dll|ko\Microsoft.SqlServer.Management.XEventDbScoped.resources.dll|ko\Microsoft.SqlServer.Management.XEventDbScopedEnum.resources.dll|ko\Microsoft.SqlServer.OlapEnum.resources.dll|ko\Microsoft.SqlServer.RegSvrEnum.resources.dll|ko\Microsoft.SqlServer.ServiceBrokerEnum.resources.dll|ko\Microsoft.SqlServer.Smo.resources.dll|ko\Microsoft.SqlServer.SmoExtended.resources.dll|ko\Microsoft.SqlServer.SqlEnum.resources.dll|ko\Microsoft.SqlServer.SqlWmiManagement.resources.dll|ko\Microsoft.SqlServer.Types.resources.dll|ko\Microsoft.SqlServer.WmiEnum.resources.dll|pt\Microsoft.AnalysisServices.Core.resources.dll|pt\microsoft.analysisservices.powershell.cmdlets.dll-help.xml|pt\Microsoft.AnalysisServices.resources.dll|pt\Microsoft.AnalysisServices.Tabular.resources.dll|pt\Microsoft.SqlServer.ConnectionInfo.resources.dll|pt\Microsoft.SqlServer.ConnectionInfoExtended.resources.dll|pt\Microsoft.SqlServer.Dmf.Common.resources.dll|pt\Microsoft.SqlServer.Dmf.resources.dll|pt\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll|pt\Microsoft.SqlServer.Management.AlwaysEncrypted.Management.resources.dll|pt\Microsoft.SqlServer.Management.AlwaysEncrypted.Types.resources.dll|pt\Microsoft.SqlServer.Management.Collector.resources.dll|pt\Microsoft.SqlServer.Management.CollectorEnum.resources.dll|pt\Microsoft.SqlServer.Management.HadrDMF.resources.dll|pt\Microsoft.SqlServer.Management.InMemoryOLTPMigrationAdvisor.resources.dll|pt\Microsoft.SqlServer.Management.PSProvider.dll-Help.xml|pt\Microsoft.SqlServer.Management.PSProvider.resources.dll|pt\Microsoft.SqlServer.Management.PSSnapins.dll-Help.xml|pt\Microsoft.SqlServer.Management.PSSnapins.resources.dll|pt\Microsoft.SqlServer.Management.RegisteredServers.resources.dll|pt\Microsoft.SqlServer.Management.Sdk.Scripting.resources.dll|pt\Microsoft.SqlServer.Management.Sdk.Sfc.resources.dll|pt\Microsoft.SqlServer.Management.SDK.SqlStudio.resources.dll|pt\Microsoft.SqlServer.Management.Utility.resources.dll|pt\Microsoft.SqlServer.Management.XEvent.resources.dll|pt\Microsoft.SqlServer.Management.XEventDbScoped.resources.dll|pt\Microsoft.SqlServer.Management.XEventDbScopedEnum.resources.dll|pt\Microsoft.SqlServer.OlapEnum.resources.dll|pt\Microsoft.SqlServer.RegSvrEnum.resources.dll|pt\Microsoft.SqlServer.ServiceBrokerEnum.resources.dll|pt\Microsoft.SqlServer.Smo.resources.dll|pt\Microsoft.SqlServer.SmoExtended.resources.dll|pt\Microsoft.SqlServer.SqlEnum.resources.dll|pt\Microsoft.SqlServer.SqlWmiManagement.resources.dll|pt\Microsoft.SqlServer.Types.resources.dll|pt\Microsoft.SqlServer.WmiEnum.resources.dll|ru\Microsoft.AnalysisServices.Core.resources.dll|ru\microsoft.analysisservices.powershell.cmdlets.dll-help.xml|ru\Microsoft.AnalysisServices.resources.dll|ru\Microsoft.AnalysisServices.Tabular.resources.dll|ru\Microsoft.Data.Tools.Schema.Sql.resources.dll|ru\Microsoft.Data.Tools.Utilities.resources.dll|ru\Microsoft.SqlServer.ConnectionInfo.resources.dll|ru\Microsoft.SqlServer.ConnectionInfoExtended.resources.dll|ru\Microsoft.SqlServer.Dac.Extensions.resources.dll|ru\Microsoft.SqlServer.Dac.resources.dll|ru\Microsoft.SqlServer.Dmf.Common.resources.dll|ru\Microsoft.SqlServer.Dmf.resources.dll|ru\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll|ru\Microsoft.SqlServer.Management.AlwaysEncrypted.Management.resources.dll|ru\Microsoft.SqlServer.Management.AlwaysEncrypted.Types.resources.dll|ru\Microsoft.SqlServer.Management.Collector.resources.dll|ru\Microsoft.SqlServer.Management.CollectorEnum.resources.dll|ru\Microsoft.SqlServer.Management.HadrDMF.resources.dll|ru\Microsoft.SqlServer.Management.InMemoryOLTPMigrationAdvisor.resources.dll|ru\Microsoft.SqlServer.Management.PSProvider.dll-Help.xml|ru\Microsoft.SqlServer.Management.PSProvider.resources.dll|ru\Microsoft.SqlServer.Management.PSSnapins.dll-Help.xml|ru\Microsoft.SqlServer.Management.PSSnapins.resources.dll|ru\Microsoft.SqlServer.Management.RegisteredServers.resources.dll|ru\Microsoft.SqlServer.Management.Sdk.Scripting.resources.dll|ru\Microsoft.SqlServer.Management.Sdk.Sfc.resources.dll|ru\Microsoft.SqlServer.Management.SDK.SqlStudio.resources.dll|ru\Microsoft.SqlServer.Management.Utility.resources.dll|ru\Microsoft.SqlServer.Management.XEvent.resources.dll|ru\Microsoft.SqlServer.Management.XEventDbScoped.resources.dll|ru\Microsoft.SqlServer.Management.XEventDbScopedEnum.resources.dll|ru\Microsoft.SqlServer.OlapEnum.resources.dll|ru\Microsoft.SqlServer.RegSvrEnum.resources.dll|ru\Microsoft.SqlServer.ServiceBrokerEnum.resources.dll|ru\Microsoft.SqlServer.Smo.resources.dll|ru\Microsoft.SqlServer.SmoExtended.resources.dll|ru\Microsoft.SqlServer.SqlEnum.resources.dll|ru\Microsoft.SqlServer.SqlWmiManagement.resources.dll|ru\Microsoft.SqlServer.Types.resources.dll|ru\Microsoft.SqlServer.WmiEnum.resources.dll|zh-hans\Microsoft.AnalysisServices.Core.resources.dll|zh-hans\microsoft.analysisservices.powershell.cmdlets.dll-help.xml|zh-hans\Microsoft.AnalysisServices.resources.dll|zh-hans\Microsoft.AnalysisServices.Tabular.resources.dll|zh-hans\Microsoft.Data.Tools.Schema.Sql.resources.dll|zh-hans\Microsoft.Data.Tools.Utilities.resources.dll|zh-hans\Microsoft.SqlServer.ConnectionInfo.resources.dll|zh-hans\Microsoft.SqlServer.ConnectionInfoExtended.resources.dll|zh-hans\Microsoft.SqlServer.Dac.Extensions.resources.dll|zh-hans\Microsoft.SqlServer.Dac.resources.dll|zh-hans\Microsoft.SqlServer.Dmf.Common.resources.dll|zh-hans\Microsoft.SqlServer.Dmf.resources.dll|zh-hans\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll|zh-hans\Microsoft.SqlServer.Management.AlwaysEncrypted.Management.resources.dll|zh-hans\Microsoft.SqlServer.Management.AlwaysEncrypted.Types.resources.dll|zh-hans\Microsoft.SqlServer.Management.Collector.resources.dll|zh-hans\Microsoft.SqlServer.Management.CollectorEnum.resources.dll|zh-hans\Microsoft.SqlServer.Management.HadrDMF.resources.dll|zh-hans\Microsoft.SqlServer.Management.InMemoryOLTPMigrationAdvisor.resources.dll|zh-hans\Microsoft.SqlServer.Management.PSProvider.dll-Help.xml|zh-hans\Microsoft.SqlServer.Management.PSProvider.resources.dll|zh-hans\Microsoft.SqlServer.Management.PSSnapins.dll-Help.xml|zh-hans\Microsoft.SqlServer.Management.PSSnapins.resources.dll|zh-hans\Microsoft.SqlServer.Management.RegisteredServers.resources.dll|zh-hans\Microsoft.SqlServer.Management.Sdk.Scripting.resources.dll|zh-hans\Microsoft.SqlServer.Management.Sdk.Sfc.resources.dll|zh-hans\Microsoft.SqlServer.Management.SDK.SqlStudio.resources.dll|zh-hans\Microsoft.SqlServer.Management.Utility.resources.dll|zh-hans\Microsoft.SqlServer.Management.XEvent.resources.dll|zh-hans\Microsoft.SqlServer.Management.XEventDbScoped.resources.dll|zh-hans\Microsoft.SqlServer.Management.XEventDbScopedEnum.resources.dll|zh-hans\Microsoft.SqlServer.OlapEnum.resources.dll|zh-hans\Microsoft.SqlServer.RegSvrEnum.resources.dll|zh-hans\Microsoft.SqlServer.ServiceBrokerEnum.resources.dll|zh-hans\Microsoft.SqlServer.Smo.resources.dll|zh-hans\Microsoft.SqlServer.SmoExtended.resources.dll|zh-hans\Microsoft.SqlServer.SqlEnum.resources.dll|zh-hans\Microsoft.SqlServer.SqlWmiManagement.resources.dll|zh-hans\Microsoft.SqlServer.Types.resources.dll|zh-hans\Microsoft.SqlServer.WmiEnum.resources.dll|zh-hant\Microsoft.AnalysisServices.Core.resources.dll|zh-hant\microsoft.analysisservices.powershell.cmdlets.dll-help.xml|zh-hant\Microsoft.AnalysisServices.resources.dll|zh-hant\Microsoft.AnalysisServices.Tabular.resources.dll|zh-hant\Microsoft.Data.Tools.Schema.Sql.resources.dll|zh-hant\Microsoft.Data.Tools.Utilities.resources.dll|zh-hant\Microsoft.SqlServer.ConnectionInfo.resources.dll|zh-hant\Microsoft.SqlServer.ConnectionInfoExtended.resources.dll|zh-hant\Microsoft.SqlServer.Dac.Extensions.resources.dll|zh-hant\Microsoft.SqlServer.Dac.resources.dll|zh-hant\Microsoft.SqlServer.Dmf.Common.resources.dll|zh-hant\Microsoft.SqlServer.Dmf.resources.dll|zh-hant\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll|zh-hant\Microsoft.SqlServer.Management.AlwaysEncrypted.Management.resources.dll|zh-hant\Microsoft.SqlServer.Management.AlwaysEncrypted.Types.resources.dll|zh-hant\Microsoft.SqlServer.Management.Collector.resources.dll|zh-hant\Microsoft.SqlServer.Management.CollectorEnum.resources.dll|zh-hant\Microsoft.SqlServer.Management.HadrDMF.resources.dll|zh-hant\Microsoft.SqlServer.Management.InMemoryOLTPMigrationAdvisor.resources.dll|zh-hant\Microsoft.SqlServer.Management.PSProvider.dll-Help.xml|zh-hant\Microsoft.SqlServer.Management.PSProvider.resources.dll|zh-hant\Microsoft.SqlServer.Management.PSSnapins.dll-Help.xml|zh-hant\Microsoft.SqlServer.Management.PSSnapins.resources.dll|zh-hant\Microsoft.SqlServer.Management.RegisteredServers.resources.dll|zh-hant\Microsoft.SqlServer.Management.Sdk.Scripting.resources.dll|zh-hant\Microsoft.SqlServer.Management.Sdk.Sfc.resources.dll|zh-hant\Microsoft.SqlServer.Management.SDK.SqlStudio.resources.dll|zh-hant\Microsoft.SqlServer.Management.Utility.resources.dll|zh-hant\Microsoft.SqlServer.Management.XEvent.resources.dll|zh-hant\Microsoft.SqlServer.Management.XEventDbScoped.resources.dll|zh-hant\Microsoft.SqlServer.Management.XEventDbScopedEnum.resources.dll|zh-hant\Microsoft.SqlServer.OlapEnum.resources.dll|zh-hant\Microsoft.SqlServer.RegSvrEnum.resources.dll|zh-hant\Microsoft.SqlServer.ServiceBrokerEnum.resources.dll|zh-hant\Microsoft.SqlServer.Smo.resources.dll|zh-hant\Microsoft.SqlServer.SmoExtended.resources.dll|zh-hant\Microsoft.SqlServer.SqlEnum.resources.dll|zh-hant\Microsoft.SqlServer.SqlWmiManagement.resources.dll|zh-hant\Microsoft.SqlServer.Types.resources.dll|zh-hant\Microsoft.SqlServer.WmiEnum.resources.dll</S>
+          <S N="GUID">97C3B589-6545-4107-A061-3FE23A4E9195</S>
+          <S N="PowerShellVersion">5.0</S>
+          <S N="DotNetFrameworkVersion">4.0</S>
+          <S N="CLRVersion">4.0</S>
+          <S N="ProcessorArchitecture">None</S>
+          <S N="CompanyName">Microsoft Corporation</S>
+        </MS>
+      </Obj>
+      <S N="InstalledLocation">C:\GitRepos\StartingWithPoshAzureFunctions\Modules\SqlServer\21.1.18230</S>
+    </MS>
+  </Obj>
+</Objs>
