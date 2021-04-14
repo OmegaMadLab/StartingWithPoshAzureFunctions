@@ -3,6 +3,5 @@
 # See https://aka.ms/functionsmanageddependency for additional information.
 #
 @{
-    'Az' = '2.*'
-    'Az.ResourceGraph' = '0.7.6'
+    'Az' = '5.*'
 }

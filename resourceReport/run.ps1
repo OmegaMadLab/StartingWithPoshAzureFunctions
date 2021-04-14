@@ -2,11 +2,18 @@
 param($Timer)
 
 # KQL query to retrieve unattached managed disks
-$kqlQry = "Resources | where type == 'microsoft.compute/disks' and isempty(managedBy) == true | project subscriptionId, resourceGroup, name, Sku = sku.name, ['Size GB'] = properties.diskSizeGB"
+$kqlQry = @"
+Resources 
+    |   where type == 'microsoft.compute/disks' and isempty(managedBy) == true 
+    |   project subscriptionId, resourceGroup, name, Sku = sku.name, ['Size GB'] = properties.diskSizeGB
+"@
 
 $qryResult = Search-AzGraph -Query $kqlQry
 
-$html = $qryResult | ConvertTo-Html -Fragment -PreContent "<h1>Disk not attached to VMs</h1>" -PostContent "<h6>Executed by Azure Function</h6>"
+$html = $qryResult | 
+            ConvertTo-Html -Fragment `
+                -PreContent "<h1>Disk not attached to VMs</h1>" `
+                -PostContent "<h6>Executed by Azure Function</h6>"
 
 $mail = @{
     "personalizations" = @(
